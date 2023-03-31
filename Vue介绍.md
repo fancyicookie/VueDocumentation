@@ -32,7 +32,10 @@ Vue.js 的核心是 一个允许采用简洁的模板语法来声明式地将数
 
 那么为什么呢？
 
-那一定是这个新建立起来的 vue实例 和 dom 之间产生了关联，如何进行关联的呢？比如我们猜测一下，可能是 vue.js 里面将这个实例对象里的 app.message 的值重新获取，再重新渲染到了页面上。
+那一定是这个新建立起来的 vue实例 和 dom 之间产生了关联，如何进行关联的呢？比如我们猜测一下，可能是 Vue.js 里面将这个实例对象里的 app.message 的值重新获取，再重新渲染到了页面上，渲染数据的位置为{{ }}。
 
-比如说如果我们再原本的html脚本上修改 Hello Vue! 不是直接利用 `<div id="app">Hello Vue!!!</div>` 修改，而是获取dom之后呢？
+比如说如果我们再原本的html脚本上修改 Hello Vue! 不是直接利用 `<div id="app">Hello Vue!!!</div>` 修改，而是获取dom之后呢？那么你可能会想到的是这种写法：
 
+![image3](D:\A-Document\Typora\typora-user-images\VueDocumentation\image3.png)
+
+当修改 app.innerText 的时候，同样在页面刷新就会出现相应的值，好像也没有什么不方便的。但是会明显感觉到 {{ message }} 的书写方式可以使用在任何地方，但是以上的书写方式，必须和div在一起使用。
