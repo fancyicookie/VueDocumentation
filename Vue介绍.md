@@ -39,3 +39,19 @@ Vue.js 的核心是 一个允许采用简洁的模板语法来声明式地将数
 ![image3](D:\A-Document\Typora\typora-user-images\VueDocumentation\image3.png)
 
 当修改 app.innerText 的时候，同样在页面刷新就会出现相应的值，好像也没有什么不方便的。但是会明显感觉到 {{ message }} 的书写方式可以使用在任何地方，但是以上的书写方式，必须和div在一起使用。
+
+那在 var app = new Vue({ }) 创建的实例中有什么呢？
+
+打印出 Vue的实例，我们可以看到包含了很多：
+
+![image4](D:\A-Document\Typora\typora-user-images\VueDocumentation\image4.png)
+
+在实例里的data：el：都会展示在Vue实例中。
+
+以上是文本插值，绑定元素是利用 v-bind
+
+`<span v-bind:title="message"></span>`
+
+### 条件与渲染
+
+控制切换元素 v-if
