@@ -30,7 +30,7 @@ Vue.js 的核心是 一个允许采用简洁的模板语法来声明式地将数
 
 注意这里修改值不和html直接交互了。
 
-那么为什么呢？
+**那么为什么呢？**
 
 那一定是这个新建立起来的 vue实例 和 dom 之间产生了关联，如何进行关联的呢？比如我们猜测一下，可能是 Vue.js 里面将这个实例对象里的 app.message 的值重新获取，再重新渲染到了页面上，渲染数据的位置为{{ }}。
 
@@ -46,12 +46,39 @@ Vue.js 的核心是 一个允许采用简洁的模板语法来声明式地将数
 
 ![image4](D:\A-Document\Typora\typora-user-images\VueDocumentation\image4.png)
 
-在实例里的data：el：都会展示在Vue实例中。
+![image5](D:\A-Document\Typora\typora-user-images\VueDocumentation\image5.png)
 
-以上是文本插值，绑定元素是利用 v-bind
+在实例里的传递的值 { el:, data: } 都会展示在Vue实例中。在实例的什么地方呢**？**
+
+上图Vue实例中的 _data 中保存了message的值
+
+**双向数据绑定原理**：每一个Vue实例都对应一个watcher实例
+
+MVVM作为数据绑定的入口，整合Observer、Compile和Watcher三者，通过Observer来监听自己的model数据变化，通过Compile来解析编译模板指令，最终利用Watcher搭起Observer和Compile之间的通信桥梁，达到数据变化 -> 视图更新。
+
+
+
+以上是文本插值，绑定元素属性 attribute 是利用 v-bind
 
 `<span v-bind:title="message"></span>`
 
-### 条件与渲染
+### 条件与循环
 
 控制切换元素 v-if
+
+`<p v-if="seen">现在你看到我了</p>`
+
+```var app3 = new Vue({
+var app3 = new Vue({
+  el: '#app-3',
+  data: {
+    seen: true
+  }
+})
+```
+
+我们不仅可以把数据绑定到 DOM 文本或 attribute，还可以绑定到 DOM **结构**
+
+### 处理用户输入
+
+v-on 添加一个事件监听器，通过它调用在 Vue 实例中定义的方法：
